@@ -1,7 +1,5 @@
 <?php
 
-exit(print_r($_SESSION));
-
 if(usuarioEstaAtivo($_SESSION['usuarioId'], 1) ||
     (($_SESSION['usuarioId'] == "") ||
     ($_SESSION['usuarioNome'] == "")||
