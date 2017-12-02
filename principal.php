@@ -2,6 +2,10 @@
         <div class="container theme-showcase" role="main">
             <?php getPage('pag'); ?>
         </div> <!-- Fim do conteúdo da página -->
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="js/ie-emulation-modes-warning.js?<?= time(); ?>"></script>
         
         <!--jQuery (necessary for Bootstrap's JavaScript plugins)--> 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
