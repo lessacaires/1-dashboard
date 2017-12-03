@@ -1,4 +1,5 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 
 /** Inclui o script de dependencias dos PROCCESS */
 require('proccess.dependencias.php');
@@ -14,7 +15,6 @@ if (isset($_POST["cadastra"])):
     $cad["promo_status"] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad["promo_obs"] = '';
     $cad["promo_data_cad"] = filter_input(INPUT_POST, 'data_cad', FILTER_SANITIZE_SPECIAL_CHARS);
-    $cad["promo_update"] = '';
     $cad["promo_aso"] = filter_input(INPUT_POST, 'aso', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad["promo_ficha_reg"] = filter_input(INPUT_POST, 'ficha_reg', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad["promo_comp_res"] = filter_input(INPUT_POST, 'comp_res', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -33,10 +33,14 @@ if (isset($_POST["cadastra"])):
      * ter o mesmo CPF de algum outro promotor já registrado.
      */
     $cpfExistente = select(dbConnect(), 'promotores', 'WHERE promo_cpf = :promo_cpf', array('promo_cpf' => $cad['promo_cpf']));
-
+    
     if (0 === count($cpfExistente)):
+        /**
+         * Busca por um CTPS de promotor para que o novo promotor inserido não
+         * possa ter o mesmo CTPS de algum outro promotor já registrado.
+         */
         $ctpsExistente = select(dbConnect(), 'promotores', 'WHERE promo_ctps = :promo_ctps', array('promo_ctps' => $cad['promo_ctps']));
-
+    
         if (0 === count($ctpsExistente)):
             if (insert(dbConnect(), 'promotores', $cad)):
 

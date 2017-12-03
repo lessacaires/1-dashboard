@@ -96,8 +96,8 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
                                 <td><?= ($rows["usu_nivel_acesso_id"] == 1 ? "admin" : "usuário"); ?></td>
                                 <td><?= ($rows["usu_status"] == 1 ? "<span type=\"button\" class=\"btn btn-sm  btn-success\">ativo</span>" : "<span type=\"button\" class=\"btn btn-sm  btn-danger\">inativo</span>"); ?></td>
                                 <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModal" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Visualizar</button></td>
-                                <td><button type="button" class="btn btn-sm btn-warning" <?= ((($_SESSION['usuarioNivelAcesso'] != '1') && ($_SESSION['usuarioId'] != $rows["usu_id"])) ? 'disabled' : ''); ?> data-toggle="modal" data-target="#editeModal" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Editar</button></td>
-                                <td><button type="button" class="btn btn-sm btn-danger" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#deletaModal" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-update="<?= $rows['usu_update']; ?>">Excluir</button></td>
+                                <td><button type="button" class="btn btn-sm btn-warning" <?= ((($_SESSION['usuarioNivelAcesso'] != '1') && ($_SESSION['usuarioId'] != $rows["usu_id"])) ? 'disabled' : ''); ?> data-toggle="modal" data-target="#editeModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Editar</button></td>
+                                <td><button type="button" class="btn btn-sm btn-danger" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#deletaModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-update="<?= $rows['usu_update']; ?>">Excluir</button></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -119,13 +119,13 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
 
                     </ul>
 
-                    <button type="button" class="btn btn-sm btn-success text-center" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#cadastraModal" >Cadastrar novo usuário</button>
+                    <button type="button" class="btn btn-sm btn-success text-center" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#cadastraModalUsuario" >Cadastrar novo usuário</button>
                 </nav>
             </div>
         </div>
 
         <!--modal edit-->
-        <div class="modal fade" id="editeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="editeModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -197,7 +197,7 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
 
 
         <!--modal delete-->
-        <div class="modal fade" id="deletaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="deletaModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -316,7 +316,7 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
 
 
         <!--modal cadastra-->
-        <div class="modal fade" id="cadastraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="cadastraModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

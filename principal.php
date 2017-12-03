@@ -16,7 +16,7 @@
 
         <script type="text/javascript">
             /*DADOS DO USUÁRIO*/
-            $('#editeModal, #deletaModal, #cadastraModal, #visualizaModal').on('show.bs.modal', function (event) {
+            $('#editeModalUsuario, #deletaModalUsuario, #cadastraModalUsuario, #visualizaModalUsuario').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var nome = button.data('nome') // Extract info from data-* attributes
                 var email = button.data('email')
@@ -129,7 +129,7 @@
 
         <script type="text/javascript">
             /*DADOS DO PROMOTOR*/
-            $('#editeModal, #deletaModal, #cadastraModal, #visualizaModal, #obsModal').on('show.bs.modal', function (event) {
+            $('#editeModalPromotor, #deletaModalPromotor, #cadastraModalPromotor, #visualizaModalPromotor, #obsModalPromotor').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
                 var nome = button.data('nome')
                 var empresa = button.data('empresa')
@@ -196,22 +196,22 @@
                     modal.find('#recipient-aso').prop('checked', false)
 
                 modal.find('#recipient-update').val(update)
-
+                
                 switch (modal.get(0).id) {
-                    case 'editeModal':
+                    case 'editeModalPromotor':
                         modal.find('.modal-title').text('Editando Promotor: ' + nome)
                         break;
-                    case 'deletaModal':
+                    case 'deletaModalPromotor':
                         modal.find('input:not([type="hidden"]), select, option, checkbox, radio, textarea').prop('disabled', true);
                         modal.find('.modal-title').text('Deletar Promotor: ' + nome)
                         break;
-                    case 'cadastraModal':
+                    case 'cadastraModalPromotor':
                         modal.find('.modal-title').text('Cadastrar Promotor:')
                         break;
-                    case 'obsModal':
+                    case 'obsModalPromotor':
                         modal.find('#recipient-obs').prop('disabled', false)
                         break;
-                    case 'visualizaModal':
+                    case 'visualizaModalPromotor':
                         modal.find('input, select, option, checkbox, radio, textarea').prop('disabled', true);
                         modal.find('.modal-title').text('Visualizar Promotor: ' + nome)
                         break;

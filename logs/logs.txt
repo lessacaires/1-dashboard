@@ -2,11 +2,3 @@
 ARQUIVOS DE LOG DE ATIVIDADES DO SISTEMA
 --------------------------------------------------------------------------------
 
-2017-12-03 08:01:02 ::1 0001 logout usaurios 0000000 O usuário "admin" encerrou uma sessão.
-2017-12-03 08:01:24 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 08:42:36 ::1 0001 logout usaurios 0000000 O usuário "admin" encerrou uma sessão.
-2017-12-03 08:42:47 ::1 0007 login usaurios 0000000 O usuário "dennislessa" iniciou uma sessão.
-2017-12-03 08:42:54 ::1 0007 atualizar promotores 0000007 O usuário "dennislessa" atualizou os dados so usuário "dennislessa".
-2017-12-03 08:43:00 ::1 0007 atualizar promotores 0000007 O usuário "dennislessa" atualizou os dados so usuário "dennislessa".
-2017-12-03 08:48:14 ::1 0007 atualizar promotores 0000007 O usuário "dennislessa" atualizou os dados so usuário "dennislessa".
-2017-12-03 08:48:17 ::1 0007 atualizar promotores 0000007 O usuário "dennislessa" atualizou os dados so usuário "dennislessa".

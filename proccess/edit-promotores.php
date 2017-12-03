@@ -1,4 +1,5 @@
 <?php
+header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 
 /** Inclui o script de dependencias dos PROCCESS */
 require('proccess.dependencias.php');
@@ -7,6 +8,10 @@ require('proccess.dependencias.php');
 require("seguranca.php");
 
 if (isset($_POST["edite"])):
+    echo '<pre>';
+    print_r($_POST);
+    exit;
+    
     $cad['promo_id'] = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad['promo_nome'] = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad['promo_rg'] = filter_input(INPUT_POST, 'rg', FILTER_SANITIZE_SPECIAL_CHARS);

@@ -47,7 +47,7 @@ function insert(PDO $conexao, $tabela, array $dados = array()) {
     $valores = ':' . implode(', :', array_keys($dados));
     $sql     = "INSERT INTO {$tabela} ({$campos}) VALUES ({$valores})";
     $stmt    = executar($conexao, $sql, $dados);
-
+    
     return (0 === $stmt->rowCount()) ? false : true;
 }
 

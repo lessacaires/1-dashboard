@@ -3,7 +3,6 @@
 </div>
 
 <?php
-
 include_once('lib/sql.php');
 
 include_once('classes/Paginacao.php');
@@ -88,8 +87,8 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                 </thead>
 
                 <tbody>
-                    <?php if(0 < $numTotalpromotores): ?>
-                        <?php foreach($promotores as $rows): ?>
+                    <?php if (0 < $numTotalpromotores): ?>
+                        <?php foreach ($promotores as $rows): ?>
                             <tr>
                                 <td><?= $rows["promo_id"]; ?></td>
                                 <td><?= $rows["promo_nome"]; ?></td>
@@ -98,17 +97,17 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                                 <td><?= $rows["promo_ctps"]; ?></td>
                                 <td><?= $rows["promo_empresa"]; ?></td>
                                 <td><?= ($rows["promo_status"] == 1 ? "<span type=\"button\" class=\"btn btn-sm  btn-success\">Ativo</span>" : "<span type=\"button\" class=\"btn btn-sm  btn-danger\">Inativo</span>"); ?></td>
-                                <td><?= ($rows["promo_situacao"] == 1 ? "<button type=\"button\" class=\"btn btn-sm  btn-success\" data-toggle=\"modal\" data-target=\"#obsModal\" data-codigo=\"" . $rows['promo_id'] . "\">Livre</button>" : "<button type=\"button\" class=\"btn btn-sm  btn-danger\" data-toggle=\"modal\" data-target=\"#obsModal\" data-codigo=\"" . $rows['promo_id'] . "\"disabled>Bloqueado</button>"); ?></td>
+                                <td><?= ($rows["promo_situacao"] == 1 ? "<button type=\"button\" class=\"btn btn-sm  btn-success\" data-toggle=\"modal\" data-target=\"#obsModalPromotor\" data-codigo=\"" . $rows['promo_id'] . "\">Livre</button>" : "<button type=\"button\" class=\"btn btn-sm  btn-danger\" data-toggle=\"modal\" data-target=\"#obsModal\" data-codigo=\"" . $rows['promo_id'] . "\"disabled>Bloqueado</button>"); ?></td>
                                 <td><?= date("d/m/Y", strtotime($rows["promo_data_cad"])); ?></td>
-                                <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModal" data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Visualizar</button></td>
-                                <td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editeModal"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Editar</button></td>
-                                <td><button type="button" class="btn btn-sm btn-danger" <?= (($_SESSION['usuarioNivelAcesso'] != '1') ? 'disabled' : ''); ?> data-toggle="modal" data-target="#deletaModal"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Excluir</button></td>
+                                <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModalPromotor" data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Visualizar</button></td>
+                                <td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editeModalPromotor"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Editar</button></td>
+                                <td><button type="button" class="btn btn-sm btn-danger" <?=(($_SESSION['usuarioNivelAcesso'] != '1')?'disabled':'');?> data-toggle="modal" data-target="#deletaModalPromotor"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Excluir</button></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                            <tr>
-                                <td colspan="20" class="col-no-register">Não existem promotores registrados.</td>
-                            </tr>
+                        <tr>
+                            <td colspan="20" class="col-no-register">Não existem promotores registrados.</td>
+                        </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -123,13 +122,13 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                         ?>
 
                     </ul>
-                    <button type="button" class="btn btn-sm btn-success text-center" data-toggle="modal" data-target="#cadastraModal" >Cadastrar novo Promotor</button>
+                    <button type="button" class="btn btn-sm btn-success text-center" data-toggle="modal" data-target="#cadastraModalPromotor" >Cadastrar novo Promotor</button>
                 </nav>
             </div>
         </div>
 
         <!--modal edit-->
-        <div class="modal fade" id="editeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="editeModalPromotor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -230,7 +229,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
 
 
         <!--modal observação-->
-        <div class="modal fade" id="obsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="obsModalPromotor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -265,7 +264,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
 
 
         <!--modal delete-->
-        <div class="modal fade" id="deletaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="deletaModalPromotor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -367,7 +366,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
 
         <!--modal visualiza-->
 
-        <div class="modal fade" id="visualizaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="visualizaModalPromotor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -465,7 +464,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
         <!-- fim modal visualiza -->
 
         <!--modal cadastra-->
-        <div class="modal fade" id="cadastraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="cadastraModalPromotor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -502,19 +501,19 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                                 <label for="message-text" class="control-label">Documentos Obrigatórios</label>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label col-sm-2">
-                                        <input class="form-check-input" type="checkbox" id="recipient-carta"> Carta
+                                        <input class="form-check-input" name="carta" type="checkbox" id="recipient-carta"> Carta
                                     </label>
 
                                     <label class="form-check-label col-sm-4">
-                                        <input class="form-check-input" type="checkbox" id="recipient-ficha-reg" > Ficha Registro
+                                        <input class="form-check-input" name="ficha_reg" type="checkbox" id="recipient-ficha-reg" > Ficha Registro
                                     </label>
 
                                     <label class="form-check-label col-sm-4">
-                                        <input class="form-check-input" type="checkbox" id="recipient-comp-res"> Comp. Residência
+                                        <input class="form-check-input" name="comp_res" type="checkbox" id="recipient-comp-res"> Comp. Residência
                                     </label>
 
                                     <label class="form-check-label col-sm-2">
-                                        <input class="form-check-input" type="checkbox" id="recipient-aso" checked> ASO
+                                        <input class="form-check-input" name="aso" type="checkbox" id="recipient-aso" checked> ASO
                                     </label>
                                 </div>
                             </div>
