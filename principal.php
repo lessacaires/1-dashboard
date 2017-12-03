@@ -35,6 +35,11 @@
 
                 switch (modal.get(0).id) {
                     case 'editeModal':
+                        if ('1' != nivelAcesso) {
+                            modal.find('#recipient-nivel-acesso').prop('disabled', true)
+                            modal.find('#recipient-status').prop('disabled', true)
+                        }
+                        
                         modal.find('.modal-title').text('Editando Usuário: ' + nome)
                         break;
                     case 'deletaModal':

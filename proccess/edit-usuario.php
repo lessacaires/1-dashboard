@@ -16,6 +16,10 @@ if (isset($_POST["edite"])):
     $edit["usu_update"] = filter_input(INPUT_POST, 'data_edit', FILTER_SANITIZE_SPECIAL_CHARS);
     $edit["usu_status"] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_SPECIAL_CHARS);
 
+    
+    if (!eAdmin($_SESSION['usuarioId'], $_SESSION['usuarioLogin']) || ($edit['usu_id'] === $_SESSION['usuarioId']))
+        unset($edit['usu_nivel_acesso_id'], $edit['usu_status']);
+    
     /**
      * Faz a verificação da senha. Como no formulário permanece a senha em MD5,
      * então faz-se uma verificação se a mesma passada é igual ao MD5 do usuário
