@@ -34,7 +34,7 @@
                 var modal = $(this);
 
                 switch (modal.get(0).id) {
-                    case 'editeModal':
+                    case 'editeModalUsuario':
                         if ('1' != nivelAcesso) {
                             modal.find('#recipient-nivel-acesso').prop('disabled', true)
                             modal.find('#recipient-status').prop('disabled', true)
@@ -42,14 +42,14 @@
                         
                         modal.find('.modal-title').text('Editando Usuário: ' + nome)
                         break;
-                    case 'deletaModal':
+                    case 'deletaModalUsuario':
                         modal.find('input:not([type="hidden"]), select, option, checkbox, radio, textarea').prop('disabled', true);
                         modal.find('.modal-title').text('Deletar Usuário: ' + nome)
                         break;
-                    case 'cadastraModal':
+                    case 'cadastraModalUsuario':
                         modal.find('.modal-title').text('Cadastrar Usuário: ' + nome)
                         break;
-                    case 'visualizaModal':
+                    case 'visualizaModalUsuario':
                         modal.find('input:not([type="hidden"]), select, option, checkbox, radio, textarea').prop('disabled', true);
                         modal.find('.modal-title').text('Visualizar Usuário: ' + nome)
                         break;

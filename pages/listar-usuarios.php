@@ -95,9 +95,9 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
                                 <td><?= date("d/m/Y H:i:s", strtotime($rows["usu_update"])); ?></td>
                                 <td><?= ($rows["usu_nivel_acesso_id"] == 1 ? "admin" : "usuário"); ?></td>
                                 <td><?= ($rows["usu_status"] == 1 ? "<span type=\"button\" class=\"btn btn-sm  btn-success\">ativo</span>" : "<span type=\"button\" class=\"btn btn-sm  btn-danger\">inativo</span>"); ?></td>
-                                <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModal" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Visualizar</button></td>
+                                <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Visualizar</button></td>
                                 <td><button type="button" class="btn btn-sm btn-warning" <?= ((($_SESSION['usuarioNivelAcesso'] != '1') && ($_SESSION['usuarioId'] != $rows["usu_id"])) ? 'disabled' : ''); ?> data-toggle="modal" data-target="#editeModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-update="<?= $rows['usu_update']; ?>">Editar</button></td>
-                                <td><button type="button" class="btn btn-sm btn-danger" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#deletaModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-status="<?= $rows['usu_status']; ?>" data-update="<?= $rows['usu_update']; ?>">Excluir</button></td>
+                                <td><button type="button" class="btn btn-sm btn-danger" <?= ($_SESSION['usuarioNivelAcesso'] != '1' ? 'disabled' : ''); ?> data-toggle="modal" data-target="#deletaModalUsuario" data-codigo="<?= $rows['usu_id']; ?>" data-nome="<?= $rows['usu_nome']; ?>" data-email="<?= $rows['usu_email']; ?>" data-login="<?= $rows['usu_login']; ?>" data-senha="<?= $rows['usu_senha']; ?>" data-nivel-acesso="<?= $rows['usu_nivel_acesso_id']; ?>" data-cad="<?= $rows['usu_data_cad']; ?>"  data-status="<?= $rows['usu_status']; ?>" data-update="<?= $rows['usu_update']; ?>">Excluir</button></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -206,35 +206,54 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
                     </div>
                     <div class="modal-body">
                         <form method="POST" action="proccess/del-usuario.php" >
-                            <div class="form-group">
-                                <label for="recipient-name" class="control-label">Nome:</label>
-                                <input type="text" class="form-control" name="nome" id="recipient-name" disabled>
+                            <div class="row">
+                                <div class="form-group col col-sm-12">
+                                    <label for="recipient-name" class="control-label">Nome:</label>
+                                    <input type="text" class="form-control" name="nome" id="recipient-name">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="control-label">E-mail:</label>
-                                <input type="text" class="form-control" name="email" id="recipient-email" disabled>
+                            <div class="row">
+                                <div class="form-group col col-sm-12">
+                                    <label for="message-text" class="control-label">E-mail:</label>
+                                    <input type="text" class="form-control" name="email" id="recipient-email">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="control-label">Login:</label>
-                                <input type="text" class="form-control" name="login" id="recipient-login" disabled>
+                            <div class="row">
+                                <div class="form-group col col-sm-4">
+                                    <label for="message-text" class="control-label">Login:</label>
+                                    <input type="text" class="form-control" name="login" id="recipient-login">
+                                </div>
+                                <div class="form-group col col-sm-4">
+                                    <label for="message-text" class="control-label">Senha:</label>
+                                    <input type="password" class="form-control" name="senha" id="recipient-senha">
+                                </div>
+
+                                <div class="form-group col col-sm-4">
+                                    <label for="message-text" class="control-label">Nível de Acesso</label>
+                                    <div>
+                                        <select class="form-control" name="nivel_acesso" id="recipient-nivel-acesso">
+                                            <option value="1">Administrador</option>
+                                            <option value="2">Usuário</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="message-text" class="control-label">Senha:</label>
-                                <input type="password" class="form-control" name="senha" id="recipient-senha" disabled>
-                            </div>
-                            <div class="form-group">
-                                <label for="message-text" class="control-label">Nível de Acesso</label>
-                                <select class="form-control" name="nivel_acesso" id="recipient-nivel-acesso" disabled>
-                                    <option  value="1">Administrador</option>
-                                    <option value="2">Usuário</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputStatus" class="control-label">Status</label>
-                                <select class="form-control" name="status" id="recipient-status" disabled>
-                                    <option value="1">Ativo</option>
-                                    <option value="0">Inativo</option>
-                                </select>
+                            <div class="row">
+                                <div class="form-group  col col-sm-4">
+                                    <label for="inputStatus" class="control-label">Status</label>
+                                    <select class="form-control" name="status" id="recipient-status">
+                                        <option value="1">Ativo</option>
+                                        <option value="0">Inativo</option>
+                                    </select>
+                                </div>
+                                <div class="form-group  col col-sm-4">
+                                    <label for="message-text" class="control-label">Data Cadastro:</label>
+                                    <input type="text" class="form-control" name="data_cad" id="recipient-cad" disabled>
+                                </div>
+                                <div class="form-group  col col-sm-4">
+                                    <label for="message-text" class="control-label">Data Atualização:</label>
+                                    <input type="text" class="form-control" name="data_update" id="recipient-update" disabled>
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="hidden" id="recipient-codigo" name="codigo" value="">
@@ -251,7 +270,7 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
 
         <!--modal visualiza-->
 
-        <div class="modal fade" id="visualizaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal fade" id="visualizaModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
