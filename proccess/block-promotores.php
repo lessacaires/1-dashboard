@@ -18,7 +18,7 @@ if (isset($bloquear)):
     if (update(dbConnect(), 'promotores', $cad, "promo_id = :promo_id")):
         $promotor = $promotor[0];
     
-        adicionaLog($_SESSION['usuarioId'], LOG_BLOQUEIO, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" bloqueou o promotor \"{$promotor['promo_nome']}\".");
+        adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_BLOQUEIO, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" bloqueou o promotor \"{$promotor['promo_nome']}\".");
         
         $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Promotor bloqueado com sucesso!</p>";
         header("Location: ../principal.php?pag=listar-promotores");

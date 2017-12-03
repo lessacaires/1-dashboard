@@ -21,16 +21,16 @@ function usuarioEstaLogado($id) {
  * @return Boolean              Se o usuário estiver ativo então é retornado TRUE.
  *                              Caso contrário é retornado FALSE.
  */
-function usuarioEstaAtivo($id) {
-    $usuario = array();
-
-    $usuario = select(dbConnect(), 'usuarios', 'WHERE usu_id = :usu_id AND usu_status = :usu_status', array(
-        'usu_id' => $id,
-        'usu_status' => 1
-    ));
-
-    return (0 < count($usuario)) ? true : false;
-}
+//function usuarioEstaAtivo($id) {
+//    $usuario = array();
+//
+//    $usuario = select(dbConnect(), 'usuarios', 'WHERE usu_id = :usu_id AND usu_status = :usu_status', array(
+//        'usu_id' => $id,
+//        'usu_status' => 1
+//    ));
+//
+//    return (0 < count($usuario)) ? true : false;
+//}
 
 /**
  * Função para verificar se a sessão é valida.
@@ -89,8 +89,36 @@ function salvaDadosSessao(array $dados) {
     return true;
 }
 
+/**
+ * Função que apaga os dados da sessão
+ */
 function apagaSessaoUsuario() {
     unset(
-            $_SESSION['usuarioId'], $_SESSION['usuarioNivelAcesso'], $_SESSION['usuarioLogin'], $_SESSION['usuarioSenha'], $_SESSION['usuarioIP'], $_SESSION['usuarioNome']
+        $_SESSION['usuarioId'], 
+        $_SESSION['usuarioNivelAcesso'], 
+        $_SESSION['usuarioLogin'],
+        $_SESSION['usuarioSenha'], 
+        $_SESSION['usuarioIP'],
+        $_SESSION['usuarioNome']
     );
+}
+
+/**
+ * 
+ * @param Integer $id       ID do usuário logado.
+ * @param String $login     Login do usuário logado.
+ * @return Boolean          TRUE se o usuário é um administrador. FALSE caso
+ *                          contrário.
+ */
+function eAdmin($id, $login) {
+    $dados = array(
+        'usu_id' => $id,
+        'usu_login' => $login,
+        'usu_nivel_acesso_id' => 1,
+        'usu_status' => 1
+    );
+    
+    $admin = select(dbConnect(), 'usuarios', 'WHERE usu_id = :usu_id AND usu_login = :usu_login AND usu_nivel_acesso_id = :usu_nivel_acesso_id AND usu_status = :usu_status', $dados);
+    
+    return (0 < count($admin)) ? true: false;
 }

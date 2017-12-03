@@ -29,7 +29,7 @@ else:
             header('Location: ../index.php');
         else:
             
-            adicionaLog($_SESSION['usuarioId'], LOG_LOGIN, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" iniciou uma sessão.");
+            adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_LOGIN, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" iniciou uma sessão.");
             
             header('Location: ../principal.php');
         endif;

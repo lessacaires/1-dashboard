@@ -16,7 +16,7 @@ if (isset($_POST["cadastra"])):
     $cad["usu_status"] = filter_input(INPUT_POST, 'status', FILTER_SANITIZE_SPECIAL_CHARS);
 
     /** Verifica se é um admin que está realizando a operação. */
-    if ('1' == $_SESSION['usuarioNivelAcesso']):
+    if (eAdmin($_SESSION['usuarioId'], $_SESSION['usuarioLogin'])):
         
         /** Verifica já existe o email informado. */
         $emailExistente = select(dbConnect(), 'usuarios', 'WHERE usu_email = :usu_email', array('usu_email' => $cad['usu_email']));
@@ -29,7 +29,7 @@ if (isset($_POST["cadastra"])):
             if (0 == count($loginExistente)):
                 if (insert(dbConnect(), 'usuarios', $cad)):
                     
-                    adicionaLog($_SESSION['usuarioId'], LOG_INSERIR, 'usuarios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" adicionou o usuário \"{$cad['usu_login']}\".");
+                    adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_INSERIR, 'usuarios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" adicionou o usuário \"{$cad['usu_login']}\".");
                     
                     $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Cadastrado com sucesso!</p>";
                     header("Location: ../principal.php?pag=listar-usuarios");

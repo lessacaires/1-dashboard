@@ -10,6 +10,13 @@ function dbConnect() {
     return $PDOCon;
 }
 
+/**
+ * Função para executar uma query string
+ * @param PDO $conexao      Objeto PDO conectado ao banco de dados.
+ * @param String $sql       SQL de consulta.
+ * @param array $dados      Dados a serem passados para a execução da query.
+ * @return PDOStatement     PDOStatement contendo os resultados.
+ */
 function executar(PDO $conexao, $sql, array $dados = array()) {
     $stmt = $conexao->prepare($sql);
 

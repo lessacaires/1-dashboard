@@ -2,3 +2,5 @@
 ARQUIVOS DE LOG DE ATIVIDADES DO SISTEMA
 --------------------------------------------------------------------------------
 
+2017-12-03 08:01:02 ::1 0001 logout usaurios 0000000 O usuário "admin" encerrou uma sessão.
+2017-12-03 08:01:24 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.

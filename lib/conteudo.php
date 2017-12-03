@@ -35,7 +35,7 @@ function get($chave) {
  * @param String $operacao      Operação realizada pelo usuário.
  * @param String $mensagem      Descrição da operação.
  */
-function adicionaLog($id, $operacao, $tabela, $linha, $mensagem) {
+function adicionaLog($IP, $id, $operacao, $tabela, $linha, $mensagem) {
     $logfile = DOCUMENT_ROOT . '/logs/logs.txt';
 
     switch (strtolower($operacao)):
@@ -64,7 +64,9 @@ function adicionaLog($id, $operacao, $tabela, $linha, $mensagem) {
     $id       = str_pad($id, 4, '0', STR_PAD_LEFT);
     $linha    = str_pad($linha, 7, '0', STR_PAD_LEFT);
     $datetime = date('Y-m-d H:i:s');
-    $content  = "{$datetime} {$id} {$operacao} {$tabela} {$linha} {$mensagem}\n";
+    
+    # <DATA_DA_AÇÃO> <IP> <QUEM_FEZ> <O_QUE_FEZ> <ONDE_FEZ> <DADO_ALTERADO> <RESUMO>
+    $content  = "{$datetime} {$IP} {$id} {$operacao} {$tabela} {$linha} {$mensagem}\n";
     
     file_put_contents($logfile, $content, FILE_APPEND);
 }

@@ -5,7 +5,9 @@ require('proccess.dependencias.php');
 
 session_start();
 session_destroy();
-adicionaLog($_SESSION['usuarioId'], LOG_LOGOUT, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" encerrou uma sessão.");
+
+adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_LOGOUT, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" encerrou uma sessão.");
+
 unset(
     $_SESSION['usuarioId'], 				
     $_SESSION['usuarioNivelAcesso'], 
