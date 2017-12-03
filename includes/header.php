@@ -19,7 +19,7 @@ require('lib/sessao.php');
 require('lib/conteudo.php');
 
 /** Verifica se o usuário tem permissão para permanecer na página */
-require('seguranca.php');
+require('proccess/seguranca.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
