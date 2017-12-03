@@ -6,3 +6,6 @@ ARQUIVOS DE LOG DE ATIVIDADES DO SISTEMA
 2017-12-03 09:56:43 ::1 0001 inserir promotores 0000000 O usuário "admin" adicionou o promotor "a".
 2017-12-03 10:01:56 ::1 0001 inserir promotores 0000007 O usuário "admin" bloqueou o promotor "a".
 2017-12-03 10:02:14 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "a".
+2017-12-03 10:03:47 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 10:03:54 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 10:04:36 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
