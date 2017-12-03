@@ -10,20 +10,6 @@ function dbConnect() {
     return $PDOCon;
 }
 
-/**
- * @function insert         Função para a inserção de dados no banco
- *
- * @param PDO $conexao      Objeto PDO para conexão do banco de dados.
-
- * @param String $sql       String que será executada no banco de dados.
-
- * @param Array $dados      Conjunto de dados a serem utilizados (OS ÍNDICES DO
- *                          ARRAY DEVEM SER IDÊNTICOS AOS CAMPOS DA TABELA)
- *
- * @return PDOStatement     Resultado da consulta através do qual é possível
- *                          realizar diversas operações (número de linhas, as
- *                          prórprias linhas, ...)
- */
 function executar(PDO $conexao, $sql, array $dados = array()) {
     $stmt = $conexao->prepare($sql);
 
@@ -83,7 +69,7 @@ function update(PDO $conexao, $tabela, array $dados = array(), $where = '1') {
 
     $set  = implode(', ', $set);
     $sql  = "UPDATE {$tabela} SET {$set} WHERE {$where}";
-
+    
     $stmt = executar($conexao, $sql, $dados);
 
     return (0 === $stmt->rowCount()) ? false : true;

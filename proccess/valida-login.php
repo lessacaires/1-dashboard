@@ -24,14 +24,14 @@ else:
         $_SESSION["loginError"] = "Usuário inativo. Entre em contato com o administrador.";
         header('Location: ../index.php');
     else:
-        $_SESSION['usuarioId'] 			= $usuario['usu_id'];
-        $_SESSION['usuarioNivelAcesso'] = $usuario['usu_nivel_acesso_id'];
-        $_SESSION['usuarioLogin'] 		= $usuario['usu_login'];
-        $_SESSION['usuarioSenha'] 		= $usuario['usu_senha'];
-        $_SESSION['usuarioIP'] 			= filter_input(INPUT_SERVER, 'REMOTE_ADDR');
-        $_SESSION['usuarioNome'] 		= $usuario['usu_nome'];
-        $_SESSION['usuarioNivelAcesso'] = $usuario['usu_nivel_acesso_id'];
-
-        header('Location: ../principal.php');
+        if (!salvaDadosSessao($usuario)):
+            $_SESSION["loginError"] = "Não foi possível criar a sessão. Dados inválidos.";
+            header('Location: ../index.php');
+        else:
+            
+            adicionaLog($_SESSION['usuarioId'], LOG_LOGIN, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" iniciou uma sessão.");
+            
+            header('Location: ../principal.php');
+        endif;
     endif;
 endif;

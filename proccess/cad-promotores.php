@@ -27,12 +27,33 @@ if (isset($_POST["cadastra"])):
     $cad['promo_ficha_reg'] = (isset($cad['promo_ficha_reg']) && ('on' === $cad['promo_ficha_reg'])) ? 1 : 0;
     $cad['promo_comp_res'] = (isset($cad['promo_comp_res']) && ('on' === $cad['promo_comp_res'])) ? 1 : 0;
     $cad['promo_aso'] = (isset($cad['promo_aso']) && ('on' === $cad['promo_aso'])) ? 1 : 0;
+    
+    /**
+     * Busca por um CPF de promotor para que o novo promotor inserido não possa 
+     * ter o mesmo CPF de algum outro promotor já registrado.
+     */
+    $cpfExistente = select(dbConnect(), 'promotores', 'WHERE promo_cpf = :promo_cpf', array('promo_cpf' => $cad['promo_cpf']));
 
-    if (insert(dbConnect(), 'promotores', $cad)):
-        $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Cadastrado com sucesso!</p>";
-        header("Location: ../principal.php?pag=listar-promotores");
+    if (0 === count($cpfExistente)):
+        $ctpsExistente = select(dbConnect(), 'promotores', 'WHERE promo_ctps = :promo_ctps', array('promo_ctps' => $cad['promo_ctps']));
+
+        if (0 === count($ctpsExistente)):
+            if (insert(dbConnect(), 'promotores', $cad)):
+
+                adicionaLog($_SESSION['usuarioId'], LOG_INSERIR, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" adicionou o promotor \"{$cad['promo_nome']}\".");
+
+                $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Cadastrado com sucesso!</p>";
+                header("Location: ../principal.php?pag=listar-promotores");
+            else:
+                $_SESSION["cadError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao realizar cadastro!</p>";
+                header("Location: ../principal.php?pag=listar-promotores");
+            endif;
+        else:
+            $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao cadastrar. CTPS já registrado.</p>";
+            header("Location: ../principal.php?pag=listar-promotores");
+        endif;
     else:
-        $_SESSION["cadError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao realizar cadastro!</p>";
+        $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao cadastrar. CPF já registrado.</p>";
         header("Location: ../principal.php?pag=listar-promotores");
     endif;
 endif;

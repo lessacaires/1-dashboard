@@ -1,21 +1,10 @@
 <?php
 
-if(usuarioEstaAtivo($_SESSION['usuarioId'], 1) ||
-    (($_SESSION['usuarioId'] == "") ||
-    ($_SESSION['usuarioNome'] == "")||
-    ($_SESSION['usuarioLogin'] == "")||
-    ($_SESSION['usuarioSenha'] == "")||
-    ($_SESSION['usuarioNivelAcesso'] == ""))):
-
-    unset(
-        $_SESSION['usuarioId'],
-        $_SESSION['usuarioNivelAcesso'],
-        $_SESSION['usuarioLogin'],
-        $_SESSION['usuarioSenha'],
-        $_SESSION['usuarioIP'],
-        $_SESSION['usuarioNome']
-    );
-
+if(!validaSessao((isset($_SESSION['usuarioId']) ? $_SESSION['usuarioId'] : null),
+                 (isset($_SESSION['usuarioLogin']) ? $_SESSION['usuarioLogin'] : null))):
+    
+    apagaSessaoUsuario();
+    
     $_SESSION["loginError"] = "Área restrita à usuários cadastrados!";
     header("Location: ../index.php");
 endif;

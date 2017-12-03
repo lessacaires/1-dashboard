@@ -21,18 +21,39 @@ if (isset($_POST["edite"])):
     $cad['promo_carta'] = filter_input(INPUT_POST, 'carta', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad["promo_situacao"] = filter_input(INPUT_POST, 'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad["promo_empresa"] = filter_input(INPUT_POST, 'empresa', FILTER_SANITIZE_SPECIAL_CHARS);
-    
+
     /** Verificação dos checkboxes */
     $cad['promo_carta'] = (isset($cad['promo_carta']) && ('on' === $cad['promo_carta'])) ? 1 : 0;
     $cad['promo_ficha_reg'] = (isset($cad['promo_ficha_reg']) && ('on' === $cad['promo_ficha_reg'])) ? 1 : 0;
     $cad['promo_comp_res'] = (isset($cad['promo_comp_res']) && ('on' === $cad['promo_comp_res'])) ? 1 : 0;
     $cad['promo_aso'] = (isset($cad['promo_aso']) && ('on' === $cad['promo_aso'])) ? 1 : 0;
 
-    if (update(dbConnect(), 'promotores', $cad, "promo_id = :promo_id")):
-        $_SESSION["editSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Atualizado com sucesso!</p>";
-        header("Location: ../principal.php?pag=listar-promotores");
+    /**
+     * Busca por um CPF de promotor para que o novo promotor inserido não possa 
+     * ter o mesmo CPF de algum outro promotor já registrado.
+     */
+    $cpfExistente = select(dbConnect(), 'promotores', 'WHERE promo_id <> :promo_id AND promo_cpf = :promo_cpf', array('promo_id' => $cad['promo_id'], 'promo_cpf' => $cad['promo_cpf']));
+
+    if (0 === count($cpfExistente)):
+        $ctpsExistente = select(dbConnect(), 'promotores', 'WHERE promo_id <> :promo_id AND promo_ctps = :promo_ctps', array('promo_id' => $cad['promo_id'], 'promo_ctps' => $cad['promo_ctps']));
+
+        if (0 === count($ctpsExistente)):
+            if (update(dbConnect(), 'promotores', $cad, "promo_id = :promo_id")):
+
+                adicionaLog($_SESSION['usuarioId'], LOG_ATUALIZAR, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" editou os dados do promotor \"{$cad['promo_nome']}\".");
+
+                $_SESSION["editSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Atualizado com sucesso!</p>";
+                header("Location: ../principal.php?pag=listar-promotores");
+            else:
+                $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao atualizar cadastro!</p>";
+                header("Location: ../principal.php?pag=listar-promotores");
+            endif;
+        else:
+            $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao cadastrar. CTPS já registrado.</p>";
+            header("Location: ../principal.php?pag=listar-promotores");
+        endif;
     else:
-        $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao atualizar cadastro!</p>";
+        $_SESSION["editError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Erro ao cadastrar. CPF já registrado.</p>";
         header("Location: ../principal.php?pag=listar-promotores");
     endif;
 endif;

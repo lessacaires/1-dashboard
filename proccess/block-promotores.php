@@ -9,11 +9,17 @@ require("seguranca.php");
 $bloquear = filter_input(INPUT_POST, 'bloquear', FILTER_SANITIZE_SPECIAL_CHARS);
 
 if (isset($bloquear)):
-    $cad['promo_obs']      = filter_input(INPUT_POST, 'obs', FILTER_SANITIZE_SPECIAL_CHARS);
-    $cad['promo_id']       = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_SPECIAL_CHARS);
+    $cad['promo_obs'] = filter_input(INPUT_POST, 'obs', FILTER_SANITIZE_SPECIAL_CHARS);
+    $cad['promo_id'] = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_SPECIAL_CHARS);
     $cad['promo_situacao'] = 0;
-
+    
+    $promotor = select(dbConnect(), 'promotores', 'WHERE promo_id = :promo_id', array('promo_id' => $cad['promo_id']));
+    
     if (update(dbConnect(), 'promotores', $cad, "promo_id = :promo_id")):
+        $promotor = $promotor[0];
+    
+        adicionaLog($_SESSION['usuarioId'], LOG_BLOQUEIO, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" bloqueou o promotor \"{$promotor['promo_nome']}\".");
+        
         $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Promotor bloqueado com sucesso!</p>";
         header("Location: ../principal.php?pag=listar-promotores");
     else:

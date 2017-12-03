@@ -22,12 +22,12 @@ require('lib/conteudo.php');
 require('seguranca.php');
 
 /** Verifica se existe algum usuário logado */
-$usuario = usuarioEstaLogado((isset($_SESSION['usuarioId']) ? $_SESSION['usuarioId'] : null));
-
-if (null === $usuario):
-    $_SESSION["loginError"] = 'Nenhum usuário logado';
-    header("Location: index.php");
-endif;
+//$usuario = usuarioEstaLogado((isset($_SESSION['usuarioId']) ? $_SESSION['usuarioId'] : null));
+//
+//if (null === $usuario):
+//    $_SESSION["loginError"] = 'Nenhum usuário logado';
+//    header("Location: index.php");
+//endif;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
