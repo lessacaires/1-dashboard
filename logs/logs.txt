@@ -24,3 +24,9 @@
 2017-12-03 23:35:44;::1;7;login;usaurios;0;O usuário "dennislessa" iniciou uma sessão.
 2017-12-03 23:36:09;::1;7;logout;usaurios;0;O usuário "dennislessa" encerrou uma sessão.
 2017-12-03 23:36:18;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 23:44:21;::1;7;login;usaurios;;O usuário "dennislessa" iniciou uma sessão.
+2017-12-03 23:44:36;::1;1;login;usaurios;;O usuário "admin" iniciou uma sessão.
+2017-12-03 23:54:46;::1;1;logout;usaurios;;O usuário "admin" encerrou uma sessão.
+2017-12-03 23:54:50;::1;7;login;usaurios;;O usuário "dennislessa" iniciou uma sessão.
+2017-12-03 23:54:53;::1;7;logout;usaurios;;O usuário "dennislessa" encerrou uma sessão.
+2017-12-03 23:54:58;::1;1;login;usaurios;;O usuário "admin" iniciou uma sessão.

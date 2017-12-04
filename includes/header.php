@@ -20,6 +20,19 @@ require('lib/conteudo.php');
 
 /** Verifica se o usuário tem permissão para permanecer na página */
 require('proccess/seguranca.php');
+
+$usuario = select(dbConnect(), 'usuarios', 'WHERE usu_id = :usu_id AND usu_login = :usu_login', array(
+    'usu_id' => $_SESSION['usuarioId'],
+    'usu_login' => $_SESSION['usuarioLogin'],
+));
+
+if (0 === count($usuario)):
+    $_SESSION['loginError'] = 'Usuário não existe';
+    header("Location: index.php");
+else:
+    $usuario = $usuario[0];
+endif;
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -83,7 +96,7 @@ require('proccess/seguranca.php');
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['usuarioNome']; ?><span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" data-toggle="modal" data-target="#visualizaModal" data-codigo="<?= $usuario['usu_id']; ?>" data-nome="<?= $usuario['usu_nome']; ?>" data-email="<?= $usuario['usu_email']; ?>" data-login="<?= $usuario['usu_login']; ?>" data-senha="<?= $usuario['usu_senha']; ?>" data-nivel-acesso="<?= $usuario['usu_nivel_acesso_id']; ?>" data-status="<?= $usuario['usu_status']; ?>" data-cad="<?= $usuario['usu_data_cad']; ?>"  data-update="<?= $usuario['usu_update']; ?>">Dados do Usuário</a></li>
+                                <li><a href="#" data-toggle="modal" data-target="#visualizaModalUsuario" data-codigo="<?= $usuario['usu_id']; ?>" data-nome="<?= $usuario['usu_nome']; ?>" data-email="<?= $usuario['usu_email']; ?>" data-login="<?= $usuario['usu_login']; ?>" data-senha="<?= $usuario['usu_senha']; ?>" data-nivel-acesso="<?= $usuario['usu_nivel_acesso_id']; ?>" data-status="<?= $usuario['usu_status']; ?>" data-cad="<?= $usuario['usu_data_cad']; ?>"  data-update="<?= $usuario['usu_update']; ?>">Dados do Usuário</a></li>
                                 <?php if (eAdmin($_SESSION['usuarioId'], $_SESSION['usuarioLogin'])): ?>
                                 <li><a href="principal.php?pag=logs">Logs</a></li>
                                 <?php endif; ?>
