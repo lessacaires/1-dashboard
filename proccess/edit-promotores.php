@@ -28,7 +28,7 @@ if (isset($_POST["edite"])):
     $cad['promo_ficha_reg'] = (isset($cad['promo_ficha_reg']) && ('on' === $cad['promo_ficha_reg'])) ? 1 : 0;
     $cad['promo_comp_res'] = (isset($cad['promo_comp_res']) && ('on' === $cad['promo_comp_res'])) ? 1 : 0;
     $cad['promo_aso'] = (isset($cad['promo_aso']) && ('on' === $cad['promo_aso'])) ? 1 : 0;
-
+    
     /**
      * Busca por um CPF de promotor para que o novo promotor inserido não possa 
      * ter o mesmo CPF de algum outro promotor já registrado.

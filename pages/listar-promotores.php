@@ -165,19 +165,19 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                                 <label for="message-text" class="control-label">Documentos Obrigatórios</label>
                                 <div class="form-check form-check-inline">
                                     <label class="form-check-label col-sm-2">
-                                        <input class="form-check-input" type="checkbox" id="recipient-carta"> Carta
+                                        <input class="form-check-input" name="carta" type="checkbox" id="recipient-carta"> Carta
                                     </label>
 
                                     <label class="form-check-label col-sm-4">
-                                        <input class="form-check-input" type="checkbox" id="recipient-ficha-reg" > Ficha Registro
+                                        <input class="form-check-input" name="ficha_reg" type="checkbox" id="recipient-ficha-reg" > Ficha Registro
                                     </label>
 
                                     <label class="form-check-label col-sm-4">
-                                        <input class="form-check-input" type="checkbox" id="recipient-comp-res"> Comp. Residência
+                                        <input class="form-check-input" name="comp_res" type="checkbox" id="recipient-comp-res"> Comp. Residência
                                     </label>
 
                                     <label class="form-check-label col-sm-2">
-                                        <input class="form-check-input" type="checkbox" id="recipient-aso" checked> ASO
+                                        <input class="form-check-input" name="aso" type="checkbox" id="recipient-aso" checked> ASO
                                     </label>
                                 </div>
                             </div>
