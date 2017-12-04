@@ -84,6 +84,9 @@ require('proccess/seguranca.php');
                             <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['usuarioNome']; ?><span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" data-toggle="modal" data-target="#visualizaModal" data-codigo="<?= $usuario['usu_id']; ?>" data-nome="<?= $usuario['usu_nome']; ?>" data-email="<?= $usuario['usu_email']; ?>" data-login="<?= $usuario['usu_login']; ?>" data-senha="<?= $usuario['usu_senha']; ?>" data-nivel-acesso="<?= $usuario['usu_nivel_acesso_id']; ?>" data-status="<?= $usuario['usu_status']; ?>" data-cad="<?= $usuario['usu_data_cad']; ?>"  data-update="<?= $usuario['usu_update']; ?>">Dados do Usuário</a></li>
+                                <?php if (eAdmin($_SESSION['usuarioId'], $_SESSION['usuarioLogin'])): ?>
+                                <li><a href="principal.php?pag=logs">Logs</a></li>
+                                <?php endif; ?>
                                 <li><a href="proccess/sair.php">Sair</a></li>
                             </ul>
                         </li>

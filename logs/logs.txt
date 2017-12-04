@@ -1,23 +1,26 @@
---------------------------------------------------------------------------------
-ARQUIVOS DE LOG DE ATIVIDADES DO SISTEMA
---------------------------------------------------------------------------------
-
-2017-12-03 09:56:05 ::1 0001 excluir promotores 0000006 O usuário "admin" excluiu o promotor "".
-2017-12-03 09:56:43 ::1 0001 inserir promotores 0000000 O usuário "admin" adicionou o promotor "a".
-2017-12-03 10:01:56 ::1 0001 inserir promotores 0000007 O usuário "admin" bloqueou o promotor "a".
-2017-12-03 10:02:14 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "a".
-2017-12-03 10:03:47 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 10:03:54 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 10:04:36 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 11:53:16 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 11:53:21 ::1 0001 atualizar promotores 0000001 O usuário "admin" atualizou os dados so usuário "admin".
-2017-12-03 11:53:26 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 12:19:48 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 13:30:40 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 13:39:41 ::1 0001 logout usaurios 0000000 O usuário "admin" encerrou uma sessão.
-2017-12-03 17:08:56 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 22:37:08 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
-2017-12-03 22:37:52 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 22:40:29 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 22:48:55 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
-2017-12-03 22:48:59 ::1 0001 atualizar promotores 0000007 O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 09:56:05;::1;1;excluir;promotores;6;O usuário "admin" excluiu o promotor "".
+2017-12-03 09:56:43;::1;1;inserir;promotores;0;O usuário "admin" adicionou o promotor "a".
+2017-12-03 10:01:56;::1;1;inserir;promotores;7;O usuário "admin" bloqueou o promotor "a".
+2017-12-03 10:02:14;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "a".
+2017-12-03 10:03:47;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 10:03:54;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 10:04:36;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 11:53:16;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 11:53:21;::1;1;atualizar;promotores;1;O usuário "admin" atualizou os dados so usuário "admin".
+2017-12-03 11:53:26;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 12:19:48;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 13:30:40;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 13:39:41;::1;1;logout;usaurios;0;O usuário "admin" encerrou uma sessão.
+2017-12-03 17:08:56;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 22:37:08;::1;1;login;usaurios;0;O usuário "admin" iniciou uma sessão.
+2017-12-03 22:37:52;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 22:40:29;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 22:48:55;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 22:48:59;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 22:50:36;::1;1;atualizar;promotores;7;O usuário "admin" editou os dados do promotor "DENNIS LESSA DOURADO".
+2017-12-03 23:33:53 ::1 0001 logout usaurios 0000000 O usuário "admin" encerrou uma sessão.
+2017-12-03 23:33:59 ::1 0007 login usaurios 0000000 O usuário "dennislessa" iniciou uma sessão.
+2017-12-03 23:35:36 ::1 0007 logout usaurios 0000000 O usuário "dennislessa" encerrou uma sessão.
+2017-12-03 23:35:44 ::1 0007 login usaurios 0000000 O usuário "dennislessa" iniciou uma sessão.
+2017-12-03 23:36:09 ::1 0007 logout usaurios 0000000 O usuário "dennislessa" encerrou uma sessão.
+2017-12-03 23:36:18 ::1 0001 login usaurios 0000000 O usuário "admin" iniciou uma sessão.
