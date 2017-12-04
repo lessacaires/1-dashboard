@@ -61,12 +61,10 @@ function adicionaLog($IP, $id, $operacao, $tabela, $linha, $mensagem) {
             $operacao = 'ERROR_LOG';
     endswitch;
 
-    $id       = str_pad($id, 4, '0', STR_PAD_LEFT);
-    $linha    = str_pad($linha, 7, '0', STR_PAD_LEFT);
     $datetime = date('Y-m-d H:i:s');
     
     # <DATA_DA_AÇÃO> <IP> <QUEM_FEZ> <O_QUE_FEZ> <ONDE_FEZ> <DADO_ALTERADO> <RESUMO>
-    $content  = "{$datetime} {$IP} {$id} {$operacao} {$tabela} {$linha} {$mensagem}\n";
+    $content  = "{$datetime};{$IP};{$id};{$operacao};{$tabela};{$linha};{$mensagem}\n";
     
     file_put_contents($logfile, $content, FILE_APPEND);
 }
