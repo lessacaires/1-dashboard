@@ -42,7 +42,7 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                         
                         if (insert(dbConnect(), 'historico', $args)):
                         
-                            adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_IN_PROMOTOR, 'historico', '---', "O usuário \"{$_SESSION['usuarioLogin']}\" deu entrada ao promotor \"{$promotor['promo_nome']}\".");
+                            adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_IN_PROMOTOR, 'historico', '---', "O usuário \"{$_SESSION['usuarioLogin']}\" registrou a entrada do promotor \"{$promotor['promo_nome']}\".");
                             
                             $_SESSION["inoutError"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Entrada realizada com sucesso!</p>";
                             header("Location: ../principal.php");
@@ -69,7 +69,7 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                         
                         if (update(dbConnect(), 'historico', $args, 'his_data = :his_data AND his_id_promotor = :his_id_promotor')):
                         
-                            adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_OUT_PROMOTOR, 'historico', $diaTrabalho['his_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" deu entrada ao promotor \"{$promotor['promo_nome']}\".");
+                            adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_OUT_PROMOTOR, 'historico', $diaTrabalho['his_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" registrou a saída do promotor \"{$promotor['promo_nome']}\".");
                             
                             $_SESSION["inoutError"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Saída realizada com sucesso!</p>";
                             header("Location: ../principal.php");
