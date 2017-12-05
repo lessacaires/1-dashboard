@@ -11,3 +11,5 @@ define('LOG_EXCLUIR', 2);
 define('LOG_LOGIN', 3);
 define('LOG_LOGOUT', 4);
 define('LOG_BOQUEIO', 5);
+define('LOG_IN_PROMOTOR', 6);
+define('LOG_OUT_PROMOTOR', 7);

@@ -29,7 +29,7 @@ if (isset($_POST["cadastra"])):
             if (0 == count($loginExistente)):
                 if (insert(dbConnect(), 'usuarios', $cad)):
                     
-                    adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_INSERIR, 'usuarios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" adicionou o usuário \"{$cad['usu_login']}\".");
+                    adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_INSERIR, 'usuarios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" adicionou o usuário \"{$cad['usu_login']}\".");
                     
                     $_SESSION["cadSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Cadastrado com sucesso!</p>";
                     header("Location: ../principal.php?pag=listar-usuarios");

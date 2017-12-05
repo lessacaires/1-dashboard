@@ -14,7 +14,7 @@ if (isset($_POST["excluir"])):
     if (delete(dbConnect(), 'promotores', $del, 'promo_id = :promo_id')):
         $promotor = $promotor[0];
     
-        adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_EXCLUIR, 'promotores', $del['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" excluiu o promotor \"{$promotor['promo_nome']}\".");
+        adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_EXCLUIR, 'promotores', $del['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" excluiu o promotor \"{$promotor['promo_nome']}\".");
             
         $_SESSION["delSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Deletado com sucesso!</p>";
         header("Location: ../principal.php?pag=listar-promotores");

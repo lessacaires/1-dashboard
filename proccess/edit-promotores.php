@@ -41,7 +41,7 @@ if (isset($_POST["edite"])):
         if (0 === count($ctpsExistente)):
             if (update(dbConnect(), 'promotores', $cad, "promo_id = :promo_id")):
 
-                adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_ATUALIZAR, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" editou os dados do promotor \"{$cad['promo_nome']}\".");
+                adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_ATUALIZAR, 'promotores', $cad['promo_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" editou os dados do promotor \"{$cad['promo_nome']}\".");
 
                 $_SESSION["editSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Atualizado com sucesso!</p>";
                 header("Location: ../principal.php?pag=listar-promotores");

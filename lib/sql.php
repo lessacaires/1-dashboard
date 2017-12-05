@@ -124,7 +124,34 @@ function delete(PDO $conexao, $tabela, array $dados = array(), $where) {
 function select(PDO $conexao, $tabela, $filtro = null, array $dados = array()) {
     $sql  = "SELECT * FROM {$tabela}";
     $sql .= (!is_null($filtro))? " {$filtro}": '';
+    
+    $stmt = executar($conexao, $sql, $dados);
 
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+/**
+ * @function select         Função de seleção de dados do banco de dados
+ *
+ * @param PDO $conexao      Objeto PDO para conexão do banco de dados.
+ 
+ * @param String $campos    Campos que devem ser retornados pela consulta.
+ 
+ * @param String $tabela    Nome da tabela em que serão realizadas as operaões.
+ * 
+ * @param String $filtro    Campo de filtro da consulta (DEVE SER DO PADRÃO DE
+ *                          UMA QUERY PREPARADA)
+
+ * @param Array $dados      Conjunto de dados a serem utilizados (OS ÍNDICES DO
+ *                          ARRAY DEVEM SER IDÊNTICOS AOS CAMPOS DA TABELA)
+ *
+ * @return Boolean          É retornado TRUE caso alguma linha da tabela tenha
+ *                          sido alterada. Caso contrário é retornado FALSE.
+ */
+function selectFilter(PDO $conexao, $campos, $tabela, $filtro = null, array $dados = array()) {
+    $sql  = "SELECT {$campos} FROM {$tabela}";
+    $sql .= (!is_null($filtro))? " {$filtro}": '';
+    
     $stmt = executar($conexao, $sql, $dados);
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

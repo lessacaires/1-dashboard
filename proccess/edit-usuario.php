@@ -45,7 +45,7 @@ if (isset($_POST["edite"])):
             if (0 == count($loginExistente)):
                 if (update(dbConnect(), 'usuarios', $edit, 'usu_id = :usu_id')):
 
-                    adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_ATUALIZAR, 'promotores', $edit['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" atualizou os dados so usuário \"{$edit['usu_login']}\".");
+                    adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_ATUALIZAR, 'promotores', $edit['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" atualizou os dados so usuário \"{$edit['usu_login']}\".");
 
                     $_SESSION["editSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Atualizado com sucesso!</p>";
                     header("Location: ../principal.php?pag=listar-usuarios");

@@ -98,7 +98,7 @@ endif;
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Promotores <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Entrada/Saída</a></li>
-                                <li><a href="#">Histórico</a></li>
+                                <li><a href="principal.php?pag=historico">Histórico</a></li>
                             </ul>
                         </li>
                     </ul>

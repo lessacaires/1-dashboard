@@ -21,7 +21,7 @@ if (isset($_POST["excluir"])):
             if (delete(dbConnect(), 'usuarios', $del, 'usu_id = :usu_id')):
                 $usuario = $usuario[0];
             
-                adicionaLog($_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_EXCLUIR, 'usuarios', $del['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" excluiu o usuário \"{$usuario['usu_login']}\".");
+                adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_EXCLUIR, 'usuarios', $del['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" excluiu o usuário \"{$usuario['usu_login']}\".");
                 
                 $_SESSION["delSuccess"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Deletado com sucesso!</p>";
                 header("Location: ../principal.php?pag=listar-usuarios");
