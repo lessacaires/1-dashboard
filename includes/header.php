@@ -87,17 +87,17 @@ endif;
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listas <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="principal.php?pag=listar-usuarios">Usuários</a></li>
-                                <li><a href="principal.php?pag=listar-promotores">Promotores</a></li>
+                                <li><a href="principal.php?pag=listar-usuarios">Usuários registrados</a></li>
                             </ul>
                         </li>
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Promotores <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Entrada/Saída</a></li>
+                                <li><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Registrar Entrada/Saída</a></li>
+                                <li><a href="principal.php?pag=listar-promotores">Promotores registrados</a></li>
                                 <li><a href="principal.php?pag=historico">Histórico</a></li>
                             </ul>
                         </li>

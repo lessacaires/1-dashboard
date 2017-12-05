@@ -45,11 +45,11 @@ $historico = select(dbConnect(), 'historico', "LIMIT {$por_pagina} OFFSET {$inic
             <table id="tabela" class="table table-mod table-striped">
                 <thead>
                     <tr>
-                        <th class="text-left">ID</th>
-                        <th class="text-left">Nome do promotor</th>
-                        <th class="text-left">Entrada</th>
-                        <th class="text-left">Saída</th>
-                        <th class="text-left">Tempo total</th>
+                        <th>ID</th>
+                        <th>Nome do promotor</th>
+                        <th>Entrada</th>
+                        <th>Saída</th>
+                        <th>Tempo total</th>
                     </tr>
                 </thead>
                 
@@ -77,21 +77,6 @@ $historico = select(dbConnect(), 'historico', "LIMIT {$por_pagina} OFFSET {$inic
                     <?php endif; ?>
                 </tbody>
             </table>
-            
-            <div class="col-md-12 text-right">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-mod">
-                        <?php
-                        $reload = "{$_SERVER['PHP_SELF']}?pag=listar-promotores&tpages={$tpages}";
-                        
-                        if ($total_paginas > 1)
-                            $paginacao->paginar($reload, $mostrar_pag, $total_paginas);
-                        ?>
-                        
-                    </ul>
-                    <button type="button" class="btn btn-sm btn-success text-center" data-toggle="modal" data-target="#cadastraModalPromotor" >Cadastrar novo Promotor</button>
-                </nav>
-            </div>
         </div>
     </div>
 </div>

@@ -23,13 +23,14 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
         if ('1' == $promotor['promo_situacao']):
             $args = array(
                 'his_data' => date('Y-m-d'),
-                'his_id_promotor' => $promotor['promo_id']
+                'his_id_promotor' => $promotor['promo_id'],
+                'his_data_saida' => 0
             );
             
             switch($operacao):
                 // Dar entrada ao promotor
                 case '1':
-                    $diaTrabalho = select(dbConnect(), 'historico', 'WHERE his_data = :his_data AND his_id_promotor = :his_id_promotor', $args);
+                    $diaTrabalho = select(dbConnect(), 'historico', 'WHERE his_data = :his_data AND his_id_promotor = :his_id_promotor AND his_data_saida = :his_data_saida', $args);
                     
                     // Verifica se existe promotor com entrava valida. Se NÂO então é dada a entrada. Se SIM uma mensagem é apresentada.
                     if (0 < count($diaTrabalho)):
@@ -56,8 +57,6 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
 
                 // Dar saída ao promotor
                 case '0':
-                    $args['his_data_saida'] = 0;
-                    
                     $diaTrabalho = select(dbConnect(), 'historico', 'WHERE his_data = :his_data AND his_id_promotor = :his_id_promotor AND his_data_saida = :his_data_saida', $args);
                     
                     // Verifica se existe promotor com entrava valida. Se SIM então é dada a saída. Se NÃO uma mensagem é apresentada.
@@ -67,7 +66,7 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                         $args['his_data_saida'] = time();
                         $args['his_tempo_total'] = $args['his_data_saida'] - $diaTrabalho['his_data_entrada'];
                         
-                        if (update(dbConnect(), 'historico', $args, 'his_data = :his_data AND his_id_promotor = :his_id_promotor')):
+                        if (update(dbConnect(), 'historico', $args, 'his_data = :his_data AND his_id_promotor = :his_id_promotor AND his_data_saida = 0')):
                         
                             adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_OUT_PROMOTOR, 'historico', $diaTrabalho['his_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" registrou a saída do promotor \"{$promotor['promo_nome']}\".");
                             
