@@ -60,6 +60,9 @@ endif;
         <!--Custom styles for this template--> 
         <link href="css/theme.css?<?= time(); ?>" rel="stylesheet">
 
+        <!--Custom styles for this template--> 
+        <link href="css/inout-promotor.css?<?= time(); ?>" rel="stylesheet">
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -90,6 +93,14 @@ endif;
                                 <li><a href="principal.php?pag=listar-promotores">Promotores</a></li>
                             </ul>
                         </li>
+                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Promotores <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Entrada/Saída</a></li>
+                                <li><a href="#">Histórico</a></li>
+                            </ul>
+                        </li>
                     </ul>
 
                     <ul class="nav navbar-nav right">
@@ -107,3 +118,4 @@ endif;
                 </div> <!--/.nav-collapse -->
             </div>
         </nav>
+

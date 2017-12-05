@@ -107,6 +107,7 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
                     <?php endif; ?>
                 </tbody>
             </table>
+
             <div class="col-md-12 text-right">
                 <nav aria-label="Page navigation">
                     <ul class="pagination pagination-mod">
@@ -204,6 +205,7 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="exampleModalLabel">Editar Usuários</h4>
                     </div>
+                    
                     <div class="modal-body">
                         <form method="POST" action="proccess/del-usuario.php" >
                             <div class="row">
@@ -266,72 +268,6 @@ $usuarios = select(dbConnect(), 'usuarios', "LIMIT {$por_pagina} OFFSET {$inicio
             </div>
         </div>
         <!-- fim modal delete -->
-
-
-        <!--modal visualiza-->
-
-        <div class="modal fade" id="visualizaModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="exampleModalLabel">Editar Usuários</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="recipient-name" class="control-label">Nome:</label>
-                            <input type="text" class="form-control" name="nome" id="recipient-name"  disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="message-text" class="control-label">E-mail:</label>
-                            <input type="text" class="form-control" name="email" id="recipient-email"  disabled>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col col-sm-4">
-                                <label for="message-text" class="control-label">Login:</label>
-                                <input type="text" class="form-control" name="login" id="recipient-login"  disabled>
-                            </div>
-                            <div class="form-group col col-sm-4">
-                                <label for="message-text" class="control-label">Senha:</label>
-                                <input type="password" class="form-control" name="senha" id="recipient-senha"  disabled>
-                            </div>
-
-                            <div class="form-group col col-sm-4">
-                                <label for="message-text" class="control-label">Nível de Acesso</label>
-                                <div>
-                                    <select class="form-control" name="nivel_acesso" id="recipient-nivel-acesso" disabled>
-                                        <option value="1">Administrador</option>
-                                        <option value="2">Usuário</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group  col col-sm-4">
-                                <label for="inputStatus" class="control-label">Status</label>
-                                <select class="form-control" name="status" id="recipient-status" disabled>
-                                    <option value="1">Ativo</option>
-                                    <option value="0">Inativo</option>
-                                </select>
-                            </div>
-                            <div class="form-group  col col-sm-4">
-                                <label for="message-text" class="control-label">Data Cadastro:</label>
-                                <input type="text" class="form-control" name="data_cad" id="recipient-cad" disabled>
-                            </div>
-                            <div class="form-group  col col-sm-4">
-                                <label for="message-text" class="control-label">Data Atualização:</label>
-                                <input type="text" class="form-control" name="data_update" id="recipient-update" disabled>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <input type="hidden" id="recipient-codigo" name="codigo" value="">
-                            <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- fim modal visualiza -->
 
 
         <!--modal cadastra-->

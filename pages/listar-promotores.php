@@ -38,6 +38,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
             </form>
         </div>
     </div>
+    
     <div class="row">
         <div class="col-md-12">
             <table id="tabela" class="table table-mod table-striped">
@@ -102,7 +103,7 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                                 <td><button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#visualizaModalPromotor" data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Visualizar</button></td>
                                 <td><button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#editeModalPromotor"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Editar</button></td>
                                 <td><button type="button" class="btn btn-sm btn-danger" <?=(($_SESSION['usuarioNivelAcesso'] != '1')?'disabled':'');?> data-toggle="modal" data-target="#deletaModalPromotor"  data-codigo="<?= $rows['promo_id']; ?>" data-nome="<?= $rows['promo_nome']; ?>" data-cpf="<?= $rows['promo_cpf']; ?>" data-rg="<?= $rows['promo_rg']; ?>" data-ctps="<?= $rows['promo_ctps']; ?>" data-obs="<?= $rows['promo_obs']; ?>" data-status="<?= $rows['promo_status']; ?>" data-cad="<?= $rows['promo_data_cad']; ?>"  data-update="<?= $rows['promo_update']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>"  data-ficha-reg="<?= $rows['promo_ficha_reg']; ?>"  data-carta="<?= $rows['promo_carta']; ?>"  data-empresa="<?= $rows['promo_empresa']; ?>"  data-aso="<?= $rows['promo_aso']; ?>"  data-comp-res="<?= $rows['promo_comp_res']; ?>"  data-situacao="<?= $rows['promo_situacao']; ?>">Excluir</button></td>
-                            </tr>
+                            <tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>

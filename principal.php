@@ -1,6 +1,118 @@
 <?php require('includes/header.php'); ?>
 <div class="container theme-showcase" role="main">
     <?php getPage('pag'); ?>
+
+    <!--modal visualiza-->
+    <div class="modal fade" id="visualizaModalUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Editar Usuários</h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">Nome:</label>
+                        <input type="text" class="form-control" name="nome" id="recipient-name"  disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">E-mail:</label>
+                        <input type="text" class="form-control" name="email" id="recipient-email"  disabled>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col col-sm-4">
+                            <label for="message-text" class="control-label">Login:</label>
+                            <input type="text" class="form-control" name="login" id="recipient-login"  disabled>
+                        </div>
+                        <div class="form-group col col-sm-4">
+                            <label for="message-text" class="control-label">Senha:</label>
+                            <input type="password" class="form-control" name="senha" id="recipient-senha"  disabled>
+                        </div>
+
+                        <div class="form-group col col-sm-4">
+                            <label for="message-text" class="control-label">Nível de Acesso</label>
+                            <div>
+                                <select class="form-control" name="nivel_acesso" id="recipient-nivel-acesso" disabled>
+                                    <option value="1">Administrador</option>
+                                    <option value="2">Usuário</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  col col-sm-4">
+                            <label for="inputStatus" class="control-label">Status</label>
+                            <select class="form-control" name="status" id="recipient-status" disabled>
+                                <option value="1">Ativo</option>
+                                <option value="0">Inativo</option>
+                            </select>
+                        </div>
+                        <div class="form-group  col col-sm-4">
+                            <label for="message-text" class="control-label">Data Cadastro:</label>
+                            <input type="text" class="form-control" name="data_cad" id="recipient-cad" disabled>
+                        </div>
+                        <div class="form-group  col col-sm-4">
+                            <label for="message-text" class="control-label">Data Atualização:</label>
+                            <input type="text" class="form-control" name="data_update" id="recipient-update" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="recipient-codigo" name="codigo" value="">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fim modal visualiza -->
+
+
+    <!-- modal entrada e saída de promotores -->
+    <div class="modal fade" id="inoutPromotoresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Entrada/Saída de promotores</h4>
+                </div>
+
+                <form method="POST" action="proccess/inout-promotores.php" id="inout-form">
+                    <div class="modal-body">
+                        <?php if (!empty($_SESSION['inoutError']) && !empty($_SESSION['inoutError'])): ?>
+                            <div class="row">
+                                <div class="form-group col col-sm-12">
+                                    <?= $_SESSION['inoutError']; unset($_SESSION['inoutError']); ?>
+                                </div>
+                            </div>
+                        <?php endif;?>
+                        
+                        <div class="row">
+                            <div class="form-group col col-sm-6">
+                                <label class="control-label">Tipo de operação:</label>
+                                <select class="form-control" name="operacao" required>
+                                    <option value="1">Registrar entrada</option>
+                                    <option value="0">Registrar saída</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col col-sm-6">
+                                <label for="recipient-name" class="control-label">CPF:</label>
+                                <input type="text" class="form-control" name="cpf" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-success">Realizar operação</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- fim modal entrada e saída de promotores -->
+
 </div> <!-- Fim do conteúdo da página -->
 
 <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
@@ -28,8 +140,6 @@
         var update = button.data('update')
         var codigo = button.data('codigo')
 
-        // If necessary(, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
         var modal = $(this);
 
         switch (modal.get(0).id) {
@@ -170,7 +280,7 @@
             else
                 modal.find('#recipient-obs').prop('disabled', true).val('');
         });
-        
+
         if ('1' == carta)
             modal.find('#recipient-carta').prop('checked', true);
         else
@@ -213,8 +323,20 @@
                 break;
         }
     });
-    /*FIM DADOS DO PROMOTOR*/
+    /* FIM DADOS DO PROMOTOR */
 </script>
+
+<?php if ('1' != $_SESSION['usuarioNivelAcesso']): ?>
+    <script type="text/javascript">
+        
+        if ('' === location.search) {
+            $(document).ready(function () {
+                $('#inoutPromotores').click();
+            });
+        }
+    </script>
+<?php endif; ?>
+
 </body>
 </html>
 <?php
