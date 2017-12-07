@@ -59,9 +59,6 @@ endif;
 
         <!--Custom styles for this template--> 
         <link href="css/theme.css?<?= time(); ?>" rel="stylesheet">
-
-        <!--Custom styles for this template--> 
-        <link href="css/inout-promotor.css?<?= time(); ?>" rel="stylesheet">
         
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -96,8 +93,11 @@ endif;
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Promotores <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Registrar Entrada/Saída</a></li>
                                 <li><a href="principal.php?pag=listar-promotores">Promotores registrados</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li ><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Registrar Entrada/Saída</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="principal.php?pag=promotores-presentes">Promotores presentes</a></li>
                                 <li><a href="principal.php?pag=historico">Histórico</a></li>
                             </ul>
                         </li>

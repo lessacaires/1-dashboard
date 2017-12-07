@@ -35,7 +35,7 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                     // Verifica se existe promotor com entrava valida. Se NÂO então é dada a entrada. Se SIM uma mensagem é apresentada.
                     if (0 < count($diaTrabalho)):
                         $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Já foi dado entrada ao promotor.</p>";
-                        header("Location: ../principal.php");
+                        header('Location: ../principal.php?pag=promotores-presentes');
                     else:
                         $args['his_data_entrada'] = time();
                         $args['his_data_saida'] = 0;
@@ -46,10 +46,10 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                             adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_IN_PROMOTOR, 'historico', '---', "O usuário \"{$_SESSION['usuarioLogin']}\" registrou a entrada do promotor \"{$promotor['promo_nome']}\".");
                             
                             $_SESSION["inoutError"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Entrada realizada com sucesso!</p>";
-                            header("Location: ../principal.php");
+                            header('Location: ../principal.php?pag=promotores-presentes');
                         else:
                             $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Um erro aconteceu e não permitiu registrar a entrada.</p>";
-                            header("Location: ../principal.php");
+                            header('Location: ../principal.php?pag=promotores-presentes');
                         endif;
                     endif;
                     
@@ -71,24 +71,24 @@ if (!empty($cpf) && isset($operacao) && (('1' == $operacao) || ('0' == $operacao
                             adicionaLog(DOCUMENT_ROOT . '/logs/historico.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_OUT_PROMOTOR, 'historico', $diaTrabalho['his_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" registrou a saída do promotor \"{$promotor['promo_nome']}\".");
                             
                             $_SESSION["inoutError"] = "<p id=\"success\" style='padding:10px' class='bg-success text-success'>Saída realizada com sucesso!</p>";
-                            header("Location: ../principal.php");
+                            header('Location: ../principal.php?pag=promotores-presentes');
                         else:
                             $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Um erro aconteceu e não permitiu registrar a saída.</p>";
-                            header("Location: ../principal.php");
+                            header('Location: ../principal.php?pag=promotores-presentes');
                         endif;
                     else:
                         $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Já foi dado saída ao promotor.</p>";
-                        header("Location: ../principal.php");
+                        header('Location: ../principal.php?pag=promotores-presentes');
                     endif;
                     
                     break;
             endswitch;
         else:
             $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Promotor bloqueado. Entre em contato com o administrador.</p>";
-            header("Location: ../principal.php");
+            header('Location: ../principal.php?pag=promotores-presentes');
         endif;
     else:
         $_SESSION["inoutError"] = "<p id=\"error\" style='padding:10px' class='bg-danger text-danger'>Não existe promotor com o CPF informado.</p>";
-        header("Location: ../principal.php");
+        header('Location: ../principal.php?pag=promotores-presentes');
     endif;
 endif;

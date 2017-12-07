@@ -79,6 +79,7 @@
 
                 <form method="POST" action="proccess/inout-promotores.php" id="inout-form">
                     <div class="modal-body">
+<!--                        
                         <?php if (!empty($_SESSION['inoutError']) && !empty($_SESSION['inoutError'])): ?>
                             <div class="row">
                                 <div class="form-group col col-sm-12">
@@ -86,7 +87,7 @@
                                 </div>
                             </div>
                         <?php endif;?>
-                        
+                        -->
                         <div class="row">
                             <div class="form-group col col-sm-6">
                                 <label class="control-label">Tipo de operação:</label>
@@ -328,8 +329,7 @@
 
 <?php if ('1' != $_SESSION['usuarioNivelAcesso']): ?>
     <script type="text/javascript">
-        
-        if ('' === location.search) {
+        if (('' === location.search) || ('?pag=promotores-presentes' === location.search)) {
             $(document).ready(function () {
                 $('#inoutPromotores').click();
             });

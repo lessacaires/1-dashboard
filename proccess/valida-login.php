@@ -31,7 +31,11 @@ else:
             
             adicionaLog(DOCUMENT_ROOT . '/logs/logs.txt', $_SESSION['usuarioIP'], $_SESSION['usuarioId'], LOG_LOGIN, 'usaurios', $cad['usu_id'], "O usuário \"{$_SESSION['usuarioLogin']}\" iniciou uma sessão.");
             
-            header('Location: ../principal.php');
+            if ('1' == $_SESSION['usuarioNivelAcesso']):
+                header('Location: ../principal.php');
+            else:
+                header('Location: ../principal.php?pag=promotores-presentes');
+            endif;
         endif;
     endif;
 endif;

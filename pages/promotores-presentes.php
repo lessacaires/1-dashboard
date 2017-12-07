@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>Histórico de Entrada e Saída de promotores</h1>
+    <h1>Promotores presentes</h1>
 </div>
 
 <?php
@@ -24,7 +24,7 @@ $total_paginas = ceil($numTotalHistorico / $por_pagina);
 include('includes/paginate.php');
 
 # Definir o limite minimo e máximo de promotores a serem listados
-$historico = select(dbConnect(), 'historico', "ORDER BY his_data_saida DESC LIMIT {$por_pagina} OFFSET {$inicio}");
+$historico = select(dbConnect(), 'historico', "WHERE his_data_saida = :his_data_saida ORDER BY his_data_entrada DESC LIMIT {$por_pagina} OFFSET {$inicio}", array('his_data_saida' => 0));
 ?>
 <div class="page-header">
     <!-- <div class="col-md-8">
@@ -43,13 +43,13 @@ $historico = select(dbConnect(), 'historico', "ORDER BY his_data_saida DESC LIMI
     <div class="row">
         <div class="col-md-12">
             <table id="tabela" class="table table-mod table-striped">
-                <?php
-                if (isset($_SESSION["inoutError"])):
-                    echo $_SESSION["inoutError"];
-                    unset($_SESSION["inoutError"]);
-                endif;
-                ?>
                 <thead>
+                    <?php
+                    if (isset($_SESSION["inoutError"])):
+                        echo $_SESSION["inoutError"];
+                        unset($_SESSION["inoutError"]);
+                    endif;
+                    ?>
                     <tr>
                         <th>ID</th>
                         <th>Nome do promotor</th>
@@ -78,7 +78,7 @@ $historico = select(dbConnect(), 'historico', "ORDER BY his_data_saida DESC LIMI
                             <?php endforeach; ?>
                         <?php else: ?>
                         <tr>
-                            <td colspan="20" class="col-no-register">Não existem registros de entradas e saídas de promotores.</td>
+                            <td colspan="20" class="col-no-register">Não existem promotores presentes na loja.</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
