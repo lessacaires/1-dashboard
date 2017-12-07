@@ -74,16 +74,16 @@ $promotores = select(dbConnect(), 'promotores', "LIMIT {$por_pagina} OFFSET {$in
                 ?>
                 <thead>
                     <tr>
-                        <th class="text-center">ID</th>
-                        <th class="text-center">Nome</th>
-                        <th class="text-center">CPF</th>
-                        <th class="text-center">RG</th>
-                        <th class="text-center">CTPS</th>
-                        <th class="text-center">Empresa</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-center">Acesso</th>
-                        <th class="text-center">Data Cad</th>
-                        <th class="text-center" colspan="3">Ações</th>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>RG</th>
+                        <th>CTPS</th>
+                        <th>Empresa</th>
+                        <th>Status</th>
+                        <th>Acesso</th>
+                        <th>Data Cad</th>
+                        <th colspan="3">Ações</th>
                     </tr>
                 </thead>
 
