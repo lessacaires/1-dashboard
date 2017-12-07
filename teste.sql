@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: 03-Dez-2017 às 11:05
+-- Generation Time: 06-Dez-2017 às 10:30
 -- Versão do servidor: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.19-1
 
@@ -47,6 +47,30 @@ INSERT INTO `categorias` (`cat_id`, `cat_nome`, `cat_data_cad`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `historico`
+--
+
+CREATE TABLE `historico` (
+  `his_id` int(11) NOT NULL,
+  `his_id_promotor` int(11) NOT NULL,
+  `his_data` date NOT NULL,
+  `his_data_entrada` bigint(20) NOT NULL,
+  `his_data_saida` bigint(20) NOT NULL,
+  `his_tempo_total` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `historico`
+--
+
+INSERT INTO `historico` (`his_id`, `his_id_promotor`, `his_data`, `his_data_entrada`, `his_data_saida`, `his_tempo_total`) VALUES
+(1, 7, '2017-12-05', 1512482881, 1512482981, 24365),
+(2, 7, '2017-12-05', 1512482995, 1512483002, 23931),
+(3, 7, '2017-12-05', 1512508638, 1512508658, 20);
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `nivel_acessos`
 --
 
@@ -86,7 +110,7 @@ CREATE TABLE `promotores` (
 --
 
 INSERT INTO `promotores` (`promo_id`, `promo_nome`, `promo_rg`, `promo_cpf`, `promo_ctps`, `promo_status`, `promo_obs`, `promo_data_cad`, `promo_update`, `promo_aso`, `promo_ficha_reg`, `promo_comp_res`, `promo_carta`, `promo_situacao`, `promo_empresa`) VALUES
-(7, 'DENNIS LESSA DOURADO', '1234567890', '12345678901', '12345', 1, '', '2017-12-03 12:56:31', '2017-12-03 13:04:36', 0, 0, 0, 0, 1, 'LESDO');
+(7, 'DENNIS LESSA DOURADO', '1234567890', '12345678901', '12345', 1, '', '2017-12-03 12:56:31', '2017-12-05 04:13:54', 0, 0, 1, 1, 1, 'LESDO');
 
 -- --------------------------------------------------------
 
@@ -114,7 +138,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usu_id`, `usu_nome`, `usu_senha`, `usu_login`, `usu_email`, `usu_cpf`, `usu_thumb`, `usu_data_nasc`, `usu_data_cad`, `usu_update`, `usu_nivel_acesso_id`, `usu_status`) VALUES
-(1, 'Administrador', '6c206cb7beda6ff19b4f21128d95fb6e', 'admin', 'lessacaires@gmail.com', '00198223505', 'admin.jpg', '1980-11-11 06:00:00', '2017-11-24 06:00:00', '2017-11-27 01:16:46', 1, 1),
+(1, 'Administrador', '6c206cb7beda6ff19b4f21128d95fb6e', 'admin', 'lessacaires@gmail.com', '00198223505', 'admin.jpg', '1980-11-11 06:00:00', '2017-11-24 06:00:00', '2017-12-03 16:33:44', 1, 1),
 (7, 'Dennis Lessa Dourado', '827ccb0eea8a706c4c34a16891f84e7b', 'dennislessa', 'dennislessa@hotmail.com', '', NULL, NULL, '2017-12-03 01:40:22', '2017-12-03 01:40:37', 2, 1);
 
 --
@@ -126,6 +150,12 @@ INSERT INTO `usuarios` (`usu_id`, `usu_nome`, `usu_senha`, `usu_login`, `usu_ema
 --
 ALTER TABLE `categorias`
   ADD PRIMARY KEY (`cat_id`);
+
+--
+-- Indexes for table `historico`
+--
+ALTER TABLE `historico`
+  ADD PRIMARY KEY (`his_id`);
 
 --
 -- Indexes for table `promotores`
@@ -148,6 +178,11 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `categorias`
   MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `historico`
+--
+ALTER TABLE `historico`
+  MODIFY `his_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `promotores`
 --
