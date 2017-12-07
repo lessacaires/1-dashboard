@@ -21,3 +21,5 @@
 2017-12-07 15:17:30;::1;1;entrada_promotor;historico;---;O usuário "admin" registrou a entrada do promotor "DENNIS LESSA DOURADO".
 2017-12-07 15:17:41;::1;1;saida_promotor;historico;7;O usuário "admin" registrou a saída do promotor "DENNIS LESSA DOURADO".
 2017-12-07 15:17:50;::1;1;entrada_promotor;historico;---;O usuário "admin" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-07 17:36:42;::1;7;saida_promotor;historico;8;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-07 17:36:52;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".

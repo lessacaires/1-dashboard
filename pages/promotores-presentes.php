@@ -34,7 +34,7 @@ $historico = select(dbConnect(), 'historico', "WHERE his_data_saida = :his_data_
         <div class="form-group input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
 
-            <form method="post" action="proccess/search_historico.php" id="busca-promotor">
+            <form method="post" action="proccess/search_promotores_presentes.php" id="busca-promotor">
                 <input name="consulta" id="txt_consulta" placeholder="Pesquisar..." style="box-shadow: none;" type="text" class="form-control">
             </form>
         </div>
@@ -52,8 +52,8 @@ $historico = select(dbConnect(), 'historico', "WHERE his_data_saida = :his_data_
                     ?>
                     <tr>
                         <th>ID</th>
-                        <th>Nome do promotor</th>
-                        <th>Entrada</th>
+                        <th>Nome</th>
+                        <th>Empresa</th>
                         <th>Saída</th>
                         <th>Tempo total</th>
                     </tr>
@@ -67,10 +67,12 @@ $historico = select(dbConnect(), 'historico', "WHERE his_data_saida = :his_data_
 
                             if (0 < count($promotor))
                                 $nome = $promotor[0]["promo_nome"];
+                            $empresa = $promotor[0]["promo_empresa"];
                             ?>
                             <tr>
                                 <td><?= $rows["his_id"]; ?></td>
                                 <td><?= $nome; ?></td>
+                                <td><?= $empresa; ?></td>
                                 <td><?= date('d-m-Y H:i:s', $rows["his_data_entrada"]); ?></td>
                                 <td><?= ('0' == $rows["his_data_saida"]) ? '---' : date('d-m-Y H:i:s', $rows["his_data_saida"]); ?></td>
                                 <td><?= calcula_tempo_permancencia($rows["his_tempo_total"]); ?></td>
@@ -83,6 +85,20 @@ $historico = select(dbConnect(), 'historico', "WHERE his_data_saida = :his_data_
                     <?php endif; ?>
                 </tbody>
             </table>
+
+            <div class="col-md-12 text-right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination pagination-mod">
+                        <?php
+                        $reload = "{$_SERVER['PHP_SELF']}?pag=promotores-presentes&tpages={$tpages}";
+
+                        if ($total_paginas > 1)
+                            $paginacao->paginar($reload, $mostrar_pag, $total_paginas);
+                        ?>
+
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>
 </div>

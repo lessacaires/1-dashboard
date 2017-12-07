@@ -98,6 +98,7 @@ endif;
                                 <li ><a href="#" id="inoutPromotores" data-backdrop="static" data-toggle="modal" data-target="#inoutPromotoresModal">Registrar Entrada/Saída</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="principal.php?pag=promotores-presentes">Promotores presentes</a></li>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="principal.php?pag=historico">Histórico</a></li>
                             </ul>
                         </li>
@@ -105,12 +106,13 @@ endif;
 
                     <ul class="nav navbar-nav right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['usuarioNome']; ?><span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $_SESSION['usuarioNome']; ?> <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#" data-toggle="modal" data-target="#visualizaModalUsuario" data-codigo="<?= $usuario['usu_id']; ?>" data-nome="<?= $usuario['usu_nome']; ?>" data-email="<?= $usuario['usu_email']; ?>" data-login="<?= $usuario['usu_login']; ?>" data-senha="<?= $usuario['usu_senha']; ?>" data-nivel-acesso="<?= $usuario['usu_nivel_acesso_id']; ?>" data-status="<?= $usuario['usu_status']; ?>" data-cad="<?= $usuario['usu_data_cad']; ?>"  data-update="<?= $usuario['usu_update']; ?>">Dados do Usuário</a></li>
                                 <?php if (eAdmin($_SESSION['usuarioId'], $_SESSION['usuarioLogin'])): ?>
                                 <li><a href="principal.php?pag=logs">Logs</a></li>
                                 <?php endif; ?>
+                                <li role="separator" class="divider"></li>
                                 <li><a href="proccess/sair.php">Sair</a></li>
                             </ul>
                         </li>

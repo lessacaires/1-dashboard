@@ -6,7 +6,7 @@ require('proccess.dependencias.php');
 require("seguranca.php");
 
 $consulta = filter_input(INPUT_POST, 'consulta', FILTER_SANITIZE_SPECIAL_CHARS);
-$busca = select(dbConnect(), 'historico h', "JOIN promotores p ON p.promo_id = h.his_id_promotor WHERE CONCAT_WS( ' ', p.promo_nome) LIKE '%{$consulta}%'");
+$busca = select(dbConnect(), 'historico h', "JOIN promotores p ON p.promo_id = h.his_id_promotor WHERE his_data_saida = :his_data_saida AND CONCAT_WS( ' ', p.promo_nome) LIKE '%{$consulta}%'", array('his_data_saida' => 0));
 
 if (0 < count($busca)):
     foreach ($busca as $rows):
