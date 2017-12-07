@@ -1,0 +1,46 @@
+body {
+  padding-top: 70px;
+  padding-bottom: 30px;
+}
+
+.theme-dropdown .dropdown-menu {
+  position: static;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.theme-showcase > p > .btn {
+  margin: 5px 0;
+}
+
+.theme-showcase .navbar .container {
+  width: auto;
+}
+
+.left {
+	float: left;
+}
+
+.right{
+	float:right;
+}
+
+/* Atualização paginator */
+.pagination-mod {
+	margin: 0;
+	display: block;
+	float: right;
+}
+
+.table-mod {
+	margin-bottom: 10px;
+}
+
+.col-no-register {
+    font-weight: bold;
+}
+
+.page-header{
+	text-transform: uppercase;
+	font-size:0.8em;
+}

@@ -1,0 +1,14 @@
+2017-12-05 11:03:46;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:05:07;::1;7;saida_promotor;historico;1;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:05:31;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:05:46;::1;7;saida_promotor;historico;2;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:05:50;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:05:54;::1;7;saida_promotor;historico;3;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:06:38;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:06:51;::1;7;saida_promotor;historico;4;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:08:01;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:09:41;::1;7;saida_promotor;historico;1;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:09:55;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 11:10:02;::1;7;saida_promotor;historico;2;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
+2017-12-05 18:17:18;::1;7;entrada_promotor;historico;---;O usuário "dennislessa" registrou a entrada do promotor "DENNIS LESSA DOURADO".
+2017-12-05 18:17:38;::1;7;saida_promotor;historico;3;O usuário "dennislessa" registrou a saída do promotor "DENNIS LESSA DOURADO".
